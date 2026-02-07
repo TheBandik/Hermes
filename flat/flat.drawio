@@ -1,0 +1,92 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.5 Chrome/134.0.6998.205 Electron/35.3.0 Safari/537.36" version="27.0.5">
+  <diagram name="Страница — 1" id="lPGYL8Qs_RrBelQGj9So">
+    <mxGraphModel dx="1072" dy="786" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="qe5xER5xFWdIMviiu_9m-1" value="" style="rounded=0;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;strokeWidth=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="120" y="240" width="280" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-2" value="" style="endArrow=classic;startArrow=none;html=1;rounded=0;strokeWidth=1;fontSize=10;startFill=0;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="710" as="sourcePoint" />
+            <mxPoint x="400" y="710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-3" value="280 см" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=1;points=[];fontSize=10;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" connectable="0" parent="qe5xER5xFWdIMviiu_9m-2">
+          <mxGeometry x="-0.0041" relative="1" as="geometry">
+            <mxPoint x="1" y="10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-4" value="" style="endArrow=classic;startArrow=none;html=1;rounded=0;fontSize=10;startFill=0;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="110" y="700" as="sourcePoint" />
+            <mxPoint x="110" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-5" value="460&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;см&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=1;points=[];horizontal=0;fontSize=10;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" connectable="0" parent="qe5xER5xFWdIMviiu_9m-4">
+          <mxGeometry x="0.0024" relative="1" as="geometry">
+            <mxPoint x="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-7" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;shape=mxgraph.floorplan.doorOverhead;fontSize=10;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="130" y="240" width="60" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-11" value="" style="rounded=0;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-12" value="" style="sketch=0;verticalLabelPosition=bottom;sketch=0;aspect=fixed;html=1;verticalAlign=top;strokeColor=none;fillColor=#000000;align=center;outlineConnect=0;pointerEvents=1;shape=mxgraph.citrix2.desktop;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="235" y="250" width="51.73" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-13" value="ПК" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="230.87" y="250" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-16" value="" style="rounded=0;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="330" y="240" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-19" value="" style="rounded=0;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="340" y="330" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-20" value="Тумба&lt;div&gt;55 х 60 см&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=1;points=[];rotation=90;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="370.0033333333334" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-21" value="Дверь&lt;div&gt;78 см&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=1;points=[];fontSize=10;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="160" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-22" value="&lt;div&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Стол&lt;/span&gt;&lt;/div&gt;&lt;div&gt;120 x 60 см&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=1;points=[];movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="260.87" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-23" value="Тумба&lt;div&gt;55 х 60 см&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=1;points=[];movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="360.0033333333334" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-24" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;shape=mxgraph.floorplan.bed_double;rotation=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="220" y="380" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-25" value="Кровать&lt;div&gt;160 х 200 см&lt;/div&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="225" y="465" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-26" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;shape=mxgraph.floorplan.dresser;rotation=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="325" y="610" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-27" value="Гардероб&lt;div&gt;110 х 40 см&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="337" y="615" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-28" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;shape=mxgraph.floorplan.doorOverhead;fontSize=10;rotation=-180;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="172" y="690" width="165" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-29" value="Окна&lt;div&gt;165 см&lt;/div&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="224.50000000000003" y="660" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-30" value="(0, 0)" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="88" y="704" width="30" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-31" value="X" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="714" width="10" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="qe5xER5xFWdIMviiu_9m-32" value="Y" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="98" y="250" width="10" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
