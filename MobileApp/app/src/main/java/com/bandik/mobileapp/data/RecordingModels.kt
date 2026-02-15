@@ -51,8 +51,10 @@ data class ScanConfig(
 data class Sample(
     val tElapsedMs: Long,
     val tUtc: String,
-    val beaconType: String, // "MAC"
+    val beaconType: String,
     val beaconValue: String,
+    val deviceName: String? = null,
     val rssi: Int,
     val txPower: Int? = null
 )
+

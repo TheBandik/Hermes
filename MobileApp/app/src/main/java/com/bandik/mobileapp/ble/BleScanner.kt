@@ -8,7 +8,7 @@ import android.os.Build
 
 class BleScanner(
     context: Context,
-    private val onSample: (rssi: Int, mac: String, txPower: Int?) -> Unit
+    private val onSample: (rssi: Int, mac: String, deviceName: String?, txPower: Int?) -> Unit
 ) {
     private val bluetoothAdapter: BluetoothAdapter =
         (context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager).adapter
@@ -21,7 +21,12 @@ class BleScanner(
             val mac = result.device?.address ?: return
             val rssi = result.rssi
             val tx = if (Build.VERSION.SDK_INT >= 26) result.txPower else null
-            onSample(rssi, mac, tx)
+            val name =
+                result.device?.name
+                    ?: result.scanRecord?.deviceName
+
+            onSample(rssi, mac, name, tx)
+
         }
 
         override fun onBatchScanResults(results: MutableList<ScanResult>) {
@@ -39,7 +44,7 @@ class BleScanner(
             .setCallbackType(ScanSettings.CALLBACK_TYPE_ALL_MATCHES)
             .build()
 
-        scanner.startScan(emptyList(), settings, callback)
+        scanner.startScan(callback)
     }
 
     fun stop() {

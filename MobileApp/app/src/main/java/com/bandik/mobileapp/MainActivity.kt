@@ -1,9 +1,11 @@
 package com.bandik.mobileapp
 
+import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -13,6 +15,7 @@ import com.bandik.mobileapp.ui.SetupScreen
 import com.bandik.mobileapp.permissions.PermissionsGate
 import com.bandik.mobileapp.power.BatteryOptimizationGate
 import com.bandik.mobileapp.recording.RecordingService
+import com.bandik.mobileapp.ui.LiveBleScreen
 import com.bandik.mobileapp.ui.RecordingScreen
 import com.bandik.mobileapp.ui.SessionsScreen
 
@@ -24,8 +27,23 @@ private sealed class Screen {
 }
 
 class MainActivity : ComponentActivity() {
+    private val launcher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        launcher.launch(
+            arrayOf(
+                Manifest.permission.BLUETOOTH_SCAN,
+                Manifest.permission.BLUETOOTH_CONNECT,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            )
+        )
+
+//        setContent {
+//            LiveBleScreen()
+//        }
         setContent {
             var screen by remember { mutableStateOf<Screen>(Screen.Setup) }
 

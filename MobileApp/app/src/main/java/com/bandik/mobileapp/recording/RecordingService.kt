@@ -134,8 +134,8 @@ class RecordingService : Service() {
         ch.trySend(json.encodeToString(meta))
 
         // Start BLE scanning
-        ble = BleScanner(this) { rssi, mac, tx ->
-            val nowElapsed = SystemClock.elapsedRealtime()
+        ble = BleScanner(this) { rssi, mac, deviceName, tx ->
+        val nowElapsed = SystemClock.elapsedRealtime()
             val tElapsed = nowElapsed - startElapsedMs
             val tUtc = Instant.now().toString()
 
@@ -144,9 +144,11 @@ class RecordingService : Service() {
                 tUtc = tUtc,
                 beaconType = "MAC",
                 beaconValue = mac,
+                deviceName = deviceName,
                 rssi = rssi,
                 txPower = tx
             )
+
 
             val ok = writeChannel?.trySend(json.encodeToString(sampleLine))?.isSuccess == true
             if (ok) {
@@ -334,9 +336,11 @@ private data class SampleLine(
     val tUtc: String,
     val beaconType: String,
     val beaconValue: String,
+    val deviceName: String? = null,
     val rssi: Int,
     val txPower: Int? = null
 )
+
 
 @Serializable
 private data class EndLine(

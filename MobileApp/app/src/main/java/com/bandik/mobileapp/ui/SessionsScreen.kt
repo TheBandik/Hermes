@@ -13,6 +13,10 @@ import androidx.core.content.FileProvider
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+
 
 @Composable
 fun SessionsScreen(
@@ -33,10 +37,7 @@ fun SessionsScreen(
             Text("No session files yet.")
         } else {
             files.forEach { f ->
-                SessionRow(
-                    file = f,
-                    onShare = { shareFile(context, f) }
-                )
+                SessionRow(file = f)
             }
         }
 
@@ -52,20 +53,55 @@ fun SessionsScreen(
 }
 
 @Composable
-private fun SessionRow(file: File, onShare: () -> Unit) {
+private fun SessionRow(file: File) {
+    val context = LocalContext.current
     val label = remember(file.name) { prettify(file) }
 
+    val saveLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.CreateDocument(
+            when {
+                file.name.endsWith(".csv") -> "text/csv"
+                else -> "application/json"
+            }
+        )
+    ) { uri ->
+        uri?.let {
+            saveFileToUri(context, file, it)
+        }
+    }
+
     Card(Modifier.fillMaxWidth()) {
-        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Column(
+            Modifier.padding(12.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
             Text(file.name, style = MaterialTheme.typography.titleMedium)
             Text(label, style = MaterialTheme.typography.bodySmall)
 
             Button(
-                onClick = onShare,
+                onClick = {
+                    saveLauncher.launch(file.name)
+                },
+                modifier = Modifier.fillMaxWidth().height(48.dp)
+            ) {
+                Text("Save to device")
+            }
+
+            OutlinedButton(
+                onClick = { shareFile(context, file) },
                 modifier = Modifier.fillMaxWidth().height(48.dp)
             ) {
                 Text("Share / Export")
             }
+        }
+    }
+}
+
+
+private fun saveFileToUri(context: Context, file: File, uri: Uri) {
+    context.contentResolver.openOutputStream(uri)?.use { output ->
+        file.inputStream().use { input ->
+            input.copyTo(output)
         }
     }
 }
