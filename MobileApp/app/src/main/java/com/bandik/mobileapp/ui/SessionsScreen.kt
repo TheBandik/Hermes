@@ -16,6 +16,8 @@ import java.util.*
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 
 @Composable
@@ -25,7 +27,7 @@ fun SessionsScreen(
     val context = LocalContext.current
     var files by remember { mutableStateOf(listSessionFiles(context)) }
 
-    Column(Modifier.fillMaxSize().padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    Column(Modifier.fillMaxSize().padding(16.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text("Sessions", style = MaterialTheme.typography.titleLarge)
             OutlinedButton(onClick = { files = listSessionFiles(context) }) {

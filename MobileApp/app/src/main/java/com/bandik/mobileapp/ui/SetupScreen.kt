@@ -204,14 +204,14 @@ data class SetupState(
 
     val pointXText: String = "0.0",
     val pointYText: String = "0.0",
-    val pointZText: String = "0.0",
+    val pointZText: String = "1.0",
 
-    val roomWidthText: String = "6.0",
-    val roomLengthText: String = "6.0",
-    val roomHeightText: String = "3.0",
+    val roomWidthText: String = "2.8",
+    val roomLengthText: String = "4.6",
+    val roomHeightText: String = "2.6",
 
-    val durationSecText: String = "10",
-    val heightMText: String = "1.0",
+    val durationSecText: String = "120",
+    val heightMText: String = "1.5",
     val phonePose: String = "hand",
     val notes: String = ""
 ) {
