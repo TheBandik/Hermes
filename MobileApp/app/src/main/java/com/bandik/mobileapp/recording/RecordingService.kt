@@ -115,15 +115,33 @@ class RecordingService : Service() {
         // Write META line first
         val meta = MetaLine(
             schema = "ble-rssi-raw-jsonl/v1",
+
             experimentId = cfg.experimentId,
             pointId = cfg.pointId,
+
+            pointX = cfg.pointX,
+            pointY = cfg.pointY,
+            pointZ = cfg.pointZ,
+
+            roomWidthM = cfg.roomWidthM,
+            roomLengthM = cfg.roomLengthM,
+            roomHeightM = cfg.roomHeightM,
+
+            beaconLayoutJson = cfg.beaconLayoutJson,
+            beaconNames = cfg.beaconNames,
+
             startTimeUtc = startUtc,
             startTimeElapsedMs = startElapsedMs,
             durationSecPlanned = cfg.durationSec,
+
             receiverHeightM = cfg.heightM,
             displayRotationDeg = cfg.displayRotationDeg,
             phonePose = cfg.phonePose,
             notes = cfg.notes,
+
+            scanMode = "LOW_LATENCY",
+            callbackType = "ALL_MATCHES",
+
             deviceManufacturer = Build.MANUFACTURER,
             deviceModel = Build.MODEL,
             osName = "Android",
@@ -131,10 +149,14 @@ class RecordingService : Service() {
             sdk = Build.VERSION.SDK_INT,
             appVersion = cfg.appVersion
         )
+
         ch.trySend(json.encodeToString(meta))
 
         // Start BLE scanning
-        ble = BleScanner(this) { rssi, mac, deviceName, tx ->
+        ble = BleScanner(
+            context = this,
+            allowedBeaconNames = cfg.beaconNames
+        ) { rssi, mac, beaconId, tx, advBase64, callbackType ->
         val nowElapsed = SystemClock.elapsedRealtime()
             val tElapsed = nowElapsed - startElapsedMs
             val tUtc = Instant.now().toString()
@@ -142,11 +164,12 @@ class RecordingService : Service() {
             val sampleLine = SampleLine(
                 tElapsedMs = tElapsed,
                 tUtc = tUtc,
-                beaconType = "MAC",
-                beaconValue = mac,
-                deviceName = deviceName,
+                beaconId = beaconId,
+                mac = mac,
                 rssi = rssi,
-                txPower = tx
+                txPower = tx,
+                advBase64 = advBase64,
+                callbackType = callbackType
             )
 
 
@@ -309,8 +332,20 @@ class RecordingService : Service() {
 private data class MetaLine(
     val type: String = "meta",
     val schema: String,
+
     val experimentId: String,
     val pointId: String,
+
+    val pointX: Double,
+    val pointY: Double,
+    val pointZ: Double,
+
+    val roomWidthM: Double,
+    val roomLengthM: Double,
+    val roomHeightM: Double,
+
+    val beaconLayoutJson: String,
+    val beaconNames: List<String>,
 
     val startTimeUtc: String,
     val startTimeElapsedMs: Long,
@@ -321,6 +356,9 @@ private data class MetaLine(
     val phonePose: String,
     val notes: String,
 
+    val scanMode: String,
+    val callbackType: String,
+
     val deviceManufacturer: String,
     val deviceModel: String,
     val osName: String,
@@ -329,17 +367,23 @@ private data class MetaLine(
     val appVersion: String
 )
 
+
 @Serializable
 private data class SampleLine(
     val type: String = "sample",
     val tElapsedMs: Long,
     val tUtc: String,
-    val beaconType: String,
-    val beaconValue: String,
-    val deviceName: String? = null,
+
+    val beaconId: String,
+    val mac: String,
+
     val rssi: Int,
-    val txPower: Int? = null
+    val txPower: Int? = null,
+
+    val advBase64: String? = null,
+    val callbackType: Int
 )
+
 
 
 @Serializable

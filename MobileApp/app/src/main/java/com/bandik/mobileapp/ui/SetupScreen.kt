@@ -1,6 +1,8 @@
 package com.bandik.mobileapp.ui
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -18,15 +20,19 @@ fun SetupScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
+
         Text("BLE Logger — Setup", style = MaterialTheme.typography.titleLarge)
+
+        // -------- BASIC --------
 
         OutlinedTextField(
             value = state.experimentId,
             onValueChange = { state = state.copy(experimentId = it) },
-            label = { Text("Experiment ID (S0 / S1 / …)") },
+            label = { Text("Experiment ID") },
             singleLine = true,
             modifier = Modifier.fillMaxWidth()
         )
@@ -34,10 +40,74 @@ fun SetupScreen(
         OutlinedTextField(
             value = state.pointId,
             onValueChange = { state = state.copy(pointId = it) },
-            label = { Text("Point ID (P12 / 12 / A-3 ...)") },
+            label = { Text("Point ID") },
             singleLine = true,
             modifier = Modifier.fillMaxWidth()
         )
+
+        // -------- POINT COORDINATES --------
+
+        Text("Point coordinates (meters)", style = MaterialTheme.typography.labelLarge)
+
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+
+            OutlinedTextField(
+                value = state.pointXText,
+                onValueChange = { state = state.copy(pointXText = it) },
+                label = { Text("X") },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                modifier = Modifier.weight(1f)
+            )
+
+            OutlinedTextField(
+                value = state.pointYText,
+                onValueChange = { state = state.copy(pointYText = it) },
+                label = { Text("Y") },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                modifier = Modifier.weight(1f)
+            )
+
+            OutlinedTextField(
+                value = state.pointZText,
+                onValueChange = { state = state.copy(pointZText = it) },
+                label = { Text("Z") },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                modifier = Modifier.weight(1f)
+            )
+        }
+
+        // -------- ROOM SIZE --------
+
+        Text("Room dimensions (meters)", style = MaterialTheme.typography.labelLarge)
+
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+
+            OutlinedTextField(
+                value = state.roomWidthText,
+                onValueChange = { state = state.copy(roomWidthText = it) },
+                label = { Text("Width") },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                modifier = Modifier.weight(1f)
+            )
+
+            OutlinedTextField(
+                value = state.roomLengthText,
+                onValueChange = { state = state.copy(roomLengthText = it) },
+                label = { Text("Length") },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                modifier = Modifier.weight(1f)
+            )
+
+            OutlinedTextField(
+                value = state.roomHeightText,
+                onValueChange = { state = state.copy(roomHeightText = it) },
+                label = { Text("Height") },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                modifier = Modifier.weight(1f)
+            )
+        }
+
+        // -------- RECORDING --------
 
         OutlinedTextField(
             value = state.durationSecText,
@@ -85,14 +155,16 @@ fun SetupScreen(
 
         OutlinedButton(
             onClick = onOpenSessions,
-            modifier = Modifier.fillMaxWidth().height(56.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp)
         ) {
             Text("Sessions / Export")
         }
 
         if (!isValid) {
             Text(
-                "Fill Experiment ID, Point ID, Duration (>0)",
+                "Fill required fields correctly",
                 color = MaterialTheme.colorScheme.error
             )
         }
@@ -104,16 +176,19 @@ private fun PoseSelector(value: String, onChange: (String) -> Unit) {
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
         Text("Phone pose", style = MaterialTheme.typography.labelLarge)
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+
             FilterChip(
                 selected = value == "hand",
                 onClick = { onChange("hand") },
                 label = { Text("hand") }
             )
+
             FilterChip(
                 selected = value == "tripod",
                 onClick = { onChange("tripod") },
                 label = { Text("tripod") }
             )
+
             FilterChip(
                 selected = value == "pocket",
                 onClick = { onChange("pocket") },
@@ -126,22 +201,41 @@ private fun PoseSelector(value: String, onChange: (String) -> Unit) {
 data class SetupState(
     val experimentId: String = "",
     val pointId: String = "",
+
+    val pointXText: String = "0.0",
+    val pointYText: String = "0.0",
+    val pointZText: String = "0.0",
+
+    val roomWidthText: String = "6.0",
+    val roomLengthText: String = "6.0",
+    val roomHeightText: String = "3.0",
+
     val durationSecText: String = "10",
     val heightMText: String = "1.0",
     val phonePose: String = "hand",
     val notes: String = ""
 ) {
+
     fun isValid(): Boolean {
         val dur = durationSecText.toIntOrNull() ?: return false
-        return experimentId.isNotBlank() && pointId.isNotBlank() && dur > 0
+        val px = pointXText.toDoubleOrNull() ?: return false
+        val py = pointYText.toDoubleOrNull() ?: return false
+        val pz = pointZText.toDoubleOrNull() ?: return false
+
+        val rw = roomWidthText.toDoubleOrNull() ?: return false
+        val rl = roomLengthText.toDoubleOrNull() ?: return false
+        val rh = roomHeightText.toDoubleOrNull() ?: return false
+
+        return experimentId.isNotBlank() &&
+                pointId.isNotBlank() &&
+                dur > 0 &&
+                rw > 0 && rl > 0 && rh > 0
     }
 
     fun normalized(): SetupState {
         return copy(
             experimentId = experimentId.trim(),
             pointId = pointId.trim(),
-            durationSecText = durationSecText.trim(),
-            heightMText = heightMText.trim(),
             notes = notes.trim()
         )
     }
